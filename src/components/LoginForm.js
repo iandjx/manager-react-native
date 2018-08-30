@@ -1,13 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
+import { View, Text } from "react-native";
 import { connect } from "react-redux";
-import { emailChanged } from "../actions";
-import { Card, CardSection, Input, Button } from "./common";
 
-class LoginForm extends Component {
+import { Card, CardSection, Input, Button } from "./common";
+import { emailChanged } from "../actions";
+
+class LoginForm extends React.Component {
   onEmailChange(text) {
-    console.log(text);
     this.props.emailChanged(text);
   }
+
+  // onPasswordChange(text) {
+  //   this.props.passwordChanged(text);
+  // }
 
   render() {
     return (
@@ -22,7 +27,13 @@ class LoginForm extends Component {
         </CardSection>
 
         <CardSection>
-          <Input secureTextEntry label="Password" placeholder="password" />
+          <Input
+            label="Password"
+            placeholder="password"
+            secureTextEntry
+            // onChangeText={this.onPasswordChange.bind(this)}
+            // value={this.props.password}
+          />
         </CardSection>
 
         <CardSection>
@@ -34,8 +45,10 @@ class LoginForm extends Component {
 }
 
 const mapStateToProps = state => {
+  const { auth } = state;
   return {
-    email: state.auth.email
+    email: auth.email
+    // password: auth.password,
   };
 };
 
