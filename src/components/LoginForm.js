@@ -20,6 +20,15 @@ class LoginForm extends React.Component {
     this.props.loginUser({ email, password });
   }
 
+  renderError() {
+    if (this.props.error) {
+      return (
+        <View style={{ backgroundColor: "white" }}>
+          <Text style={styles.errorTextStyle}>{this.props.error}</Text>
+        </View>
+      );
+    }
+  }
   render() {
     return (
       <Card>
@@ -42,6 +51,8 @@ class LoginForm extends React.Component {
           />
         </CardSection>
 
+        {this.renderError()}
+
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>Login</Button>
         </CardSection>
@@ -50,11 +61,20 @@ class LoginForm extends React.Component {
   }
 }
 
+const styles = {
+  errorTextStyle: {
+    fontSize: 20,
+    alignSelf: "center",
+    color: "red"
+  }
+};
+
 const mapStateToProps = state => {
   const { auth } = state;
   return {
     email: auth.email,
-    password: auth.password
+    password: auth.password,
+    error: auth.error
   };
 };
 
