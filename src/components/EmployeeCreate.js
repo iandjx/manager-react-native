@@ -18,6 +18,7 @@ class EmployeeCreate extends Component {
             }
           />
         </CardSection>
+
         <CardSection>
           <Input
             label="Phone"
@@ -32,10 +33,10 @@ class EmployeeCreate extends Component {
         <CardSection style={{ flexDirection: "column" }}>
           <Text style={styles.pickerTextStyle}>Shift</Text>
           <Picker
-            style={{ flex: 1 }}
+            style={{ width: "100%" }}
             selectedValue={this.props.shift}
             onValueChange={value =>
-              this.props.employeeUpdate({ prop: "shift", value: value })
+              this.props.employeeUpdate({ prop: "shift", value })
             }
           >
             <Picker.Item label="Monday" value="Monday" />
@@ -55,17 +56,21 @@ class EmployeeCreate extends Component {
     );
   }
 }
+
 const styles = {
   pickerTextStyle: {
     fontSize: 18,
-    paddingLeft: 20
+    paddingLeft: 20,
+    width: "100%"
   }
 };
+
 const mapStateToProps = state => {
   const { name, phone, shift } = state.employeeForm;
 
   return { name, phone, shift };
 };
+
 export default connect(
   mapStateToProps,
   { employeeUpdate }
