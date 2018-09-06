@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case EMPLOYEE_UPDATE:
-      console.log(action.payload.prop);
+      // console.log(action.payload.prop);
       return { ...state, [action.payload.prop]: action.payload.value };
     //key interpolation [x.payload.prop]...
     case EMPLOYEE_CREATE:
