@@ -11,11 +11,8 @@ class EmployeeList extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
-      // <View>
-      //   <Text>Test</Text>
-      // </View>
       <FlatList
         data={this.props.employees}
         renderItem={({ item }) => <ListItem employee={item} />}
