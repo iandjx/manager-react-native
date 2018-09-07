@@ -31,7 +31,6 @@ const styles = {
     fontSize: 18,
     textAlign: "center",
     fontWeight: "bold",
-    textTransform: "uppercase",
     marginLeft: 7,
     width: "100%"
   },
