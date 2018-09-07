@@ -3,7 +3,7 @@ import _ from "lodash";
 import { connect } from "react-redux";
 import EmployeeForm from "./EmployeeForm";
 import { Card, CardSection, Button } from "./common";
-import { employeeUpdate } from "../actions";
+import { employeeUpdate, employeeSave } from "../actions";
 import { Text } from "react-native";
 
 class EmployeeEdit extends Component {
@@ -15,7 +15,12 @@ class EmployeeEdit extends Component {
 
   onButtonPress() {
     const { name, phone, shift } = this.props;
-    console.log(name, phone, shift);
+    this.props.employeeSave({
+      name,
+      phone,
+      shift,
+      uid: this.props.employee.uid
+    });
   }
   render() {
     return (
@@ -36,5 +41,5 @@ const mapStateToProps = state => {
 };
 export default connect(
   mapStateToProps,
-  { employeeUpdate }
+  { employeeUpdate, employeeSave }
 )(EmployeeEdit);
